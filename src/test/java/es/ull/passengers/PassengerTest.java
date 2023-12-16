@@ -6,54 +6,69 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class FlightTest {
+class PassengerTest {
 
-    private Flight flight;
+    private Passenger passenger;
 
     @BeforeEach
     void setUp() {
-        // Initialize a Flight object before each test
-        flight = new Flight("AB123", 50);
+        // Initialize a Passenger object before each test
+        passenger = new Passenger("ID123", "John Doe", "US");
     }
 
     @Test
-    void testGetFlightNumber() {
-        assertEquals("AB123", flight.getFlightNumber());
+    void testGetIdentifier() {
+        assertEquals("ID123", passenger.getIdentifier());
     }
 
     @Test
-    void testGetNumberOfPassengers() {
-        assertEquals(0, flight.getNumberOfPassengers());
+    void testGetName() {
+        assertEquals("John Doe", passenger.getName());
     }
 
     @Test
-    void testAddPassenger() {
-        Passenger passenger = new Passenger("ID123", "John Doe", "US");
-        assertTrue(flight.addPassenger(passenger));
-        assertEquals(1, flight.getNumberOfPassengers());
-        assertEquals(flight, passenger.getFlight());
+    void testGetCountryCode() {
+        assertEquals("US", passenger.getCountryCode());
     }
 
     @Test
-    void testRemovePassenger() {
-        Passenger passenger = new Passenger("ID123", "John Doe", "US");
-        flight.addPassenger(passenger);
-        assertTrue(flight.removePassenger(passenger));
-        assertEquals(0, flight.getNumberOfPassengers());
+    void testGetFlight() {
         assertNull(passenger.getFlight());
     }
 
     @Test
-    void testInvalidFlightNumber() {
-        assertThrows(RuntimeException.class, () -> new Flight("InvalidNumber", 100));
+    void testJoinFlight() {
+        Flight flight = new Flight("AB123", 50);
+        passenger.joinFlight(flight);
+
+        assertEquals(flight, passenger.getFlight());
+        assertEquals(1, flight.getNumberOfPassengers());
     }
 
     @Test
-    void testNotEnoughSeats() {
-        Flight smallFlight = new Flight("XY456", 1);
-        Passenger passenger1 = new Passenger("ID001", "Alice", "CA");
-        Passenger passenger2 = new Passenger("ID002", "Bob", "US");
-        smallFlight.addPassenger(passenger1);
-        assertThrows(RuntimeException.class, () -> smallFlight.addPassenger(passenger2));
+    void testJoinFlightWithPreviousFlight() {
+        Flight flight1 = new Flight("AB123", 50);
+        Flight flight2 = new Flight("CD456", 50);
+
+        passenger.joinFlight(flight1);
+        passenger.joinFlight(flight2);
+
+        assertEquals(flight2, passenger.getFlight());
+        assertEquals(0, flight1.getNumberOfPassengers());
+        assertEquals(1, flight2.getNumberOfPassengers());
+    }
+
+    @Test
+    void testSetFlight() {
+        Flight flight = new Flight("AB123", 50);
+        passenger.setFlight(flight);
+
+        assertEquals(flight, passenger.getFlight());
+        assertEquals(1, flight.getNumberOfPassengers());
+    }
+
+    @Test
+    void testToString() {
+        assertEquals("Passenger John Doe with identifier: ID123 from US", passenger.toString());
     }
 }
