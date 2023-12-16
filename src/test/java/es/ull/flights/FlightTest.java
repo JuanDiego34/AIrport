@@ -55,4 +55,23 @@ class FlightTest {
         smallFlight.addPassenger(passenger1);
         assertThrows(RuntimeException.class, () -> smallFlight.addPassenger(passenger2));
     }
+
+    @Test
+    void testAddPassengerToFullFlight() {
+        Flight fullFlight = new Flight("CD789", 2);
+        Passenger passenger1 = new Passenger("ID001", "Alice", "CA");
+        Passenger passenger2 = new Passenger("ID002", "Bob", "US");
+        Passenger passenger3 = new Passenger("ID003", "Charlie", "UK");
+
+        fullFlight.addPassenger(passenger1);
+        fullFlight.addPassenger(passenger2);
+
+        assertThrows(RuntimeException.class, () -> fullFlight.addPassenger(passenger3));
+    }
+
+    @Test
+    void testRemoveNonexistentPassenger() {
+        Passenger passenger = new Passenger("ID123", "John Doe", "US");
+        assertFalse(flight.removePassenger(passenger));
+    }
 }
