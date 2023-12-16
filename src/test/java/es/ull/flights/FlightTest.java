@@ -61,7 +61,7 @@ class FlightTest {
         Flight fullFlight = new Flight("CD789", 2);
         Passenger passenger1 = new Passenger("ID001", "Alice", "CA");
         Passenger passenger2 = new Passenger("ID002", "Bob", "US");
-        Passenger passenger3 = new Passenger("ID003", "Charlie", "UK");
+        Passenger passenger3 = new Passenger("ID003", "Charlie", "CA");
 
         fullFlight.addPassenger(passenger1);
         fullFlight.addPassenger(passenger2);
