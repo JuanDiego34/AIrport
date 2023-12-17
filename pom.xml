@@ -54,7 +54,6 @@
         </plugins>
     </build>
 
-         <dependencyManagement>
     <dependencies>
          <dependency>
             <groupId>org.jacoco</groupId>
@@ -65,35 +64,13 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.7.2</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.7.2</version>
-         </dependency>
-         <dependency>
-             <groupId>org.jenkins-ci.plugins</groupId>
-             <artifactId>junit</artifactId>
-         </dependency>
-            <dependency>
-             <groupId>org.jenkins-ci.plugins</groupId>
-             <artifactId>metrics</artifactId>
-         </dependency> 
-        <dependency>
-             <groupId>org.jenkins-ci.plugins</groupId>
-             <artifactId>additional-metrics</artifactId>
-             <version>67.vcb_823d3999a_2</version>
-         </dependency>
-        <dependency>
-             <groupId>org.jenkins-ci.plugins</groupId>
-             <artifactId>build-history-metrics-plugin</artifactId>
-             <version>112.v476124de7dfc</version>
-         </dependency>
-         <dependency>
-                  <groupId>org.jenkins-ci.plugins</groupId>
-                  <artifactId>dependency-check-jenkins-plugin</artifactId>
-                  <version>5.4.3</version>
+            <version>5.6.0</version>
+            <scope>test</scope>
          </dependency>
     </dependencies>
-         </dependencyManagement>
 </project>
