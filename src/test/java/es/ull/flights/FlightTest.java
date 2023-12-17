@@ -5,26 +5,45 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @class FlightTest
+ * @brief Contiene pruebas unitarias para verificar el comportamiento de la clase Flight.
+ */
 class FlightTest {
 
+    /**
+     * @brief Vuelo utilizado en las pruebas.
+     */
     private Flight flight;
 
+    /**
+     * @brief Configuración inicial antes de cada prueba.
+     */
     @BeforeEach
     void setUp() {
-        // Initialize a Flight object before each test
+        // Inicializa un objeto Flight antes de cada prueba
         flight = new Flight("AB123", 50);
     }
 
+    /**
+     * @brief Prueba para verificar el correcto funcionamiento de getFlightNumber().
+     */
     @Test
     void testGetFlightNumber() {
         assertEquals("AB123", flight.getFlightNumber());
     }
 
+    /**
+     * @brief Prueba para verificar el correcto funcionamiento de getNumberOfPassengers().
+     */
     @Test
     void testGetNumberOfPassengers() {
         assertEquals(0, flight.getNumberOfPassengers());
     }
 
+    /**
+     * @brief Prueba para verificar el correcto funcionamiento de addPassenger().
+     */
     @Test
     void testAddPassenger() {
         Passenger passenger = new Passenger("ID123", "John Doe", "US");
@@ -33,6 +52,9 @@ class FlightTest {
         assertEquals(flight, passenger.getFlight());
     }
 
+    /**
+     * @brief Prueba para verificar el correcto funcionamiento de removePassenger().
+     */
     @Test
     void testRemovePassenger() {
         Passenger passenger = new Passenger("ID123", "John Doe", "US");
@@ -42,11 +64,17 @@ class FlightTest {
         assertNull(passenger.getFlight());
     }
 
+    /**
+     * @brief Prueba para verificar que se lance una excepción al proporcionar un número de vuelo no válido.
+     */
     @Test
     void testInvalidFlightNumber() {
         assertThrows(RuntimeException.class, () -> new Flight("InvalidNumber", 100));
     }
 
+    /**
+     * @brief Prueba para verificar que se lance una excepción al intentar agregar un pasajero cuando no hay suficientes asientos.
+     */
     @Test
     void testNotEnoughSeats() {
         Flight smallFlight = new Flight("XY456", 1);
@@ -56,6 +84,9 @@ class FlightTest {
         assertThrows(RuntimeException.class, () -> smallFlight.addPassenger(passenger2));
     }
 
+    /**
+     * @brief Prueba para verificar que se lance una excepción al intentar agregar un pasajero a un vuelo completo.
+     */
     @Test
     void testAddPassengerToFullFlight() {
         Flight fullFlight = new Flight("CD789", 2);
@@ -69,6 +100,9 @@ class FlightTest {
         assertThrows(RuntimeException.class, () -> fullFlight.addPassenger(passenger3));
     }
 
+    /**
+     * @brief Prueba para verificar que removePassenger() devuelve false al intentar eliminar un pasajero que no está a bordo.
+     */
     @Test
     void testRemoveNonexistentPassenger() {
         Passenger passenger = new Passenger("ID123", "John Doe", "US");
