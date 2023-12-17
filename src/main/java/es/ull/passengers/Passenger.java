@@ -62,7 +62,7 @@ public class Passenger {
      */
     public Passenger(String identifier, String name, String countryCode) {
         if (!Arrays.asList(Locale.getISOCountries()).contains(countryCode)) {
-            throw new RuntimeException("Código de país no válido");
+            throw new RuntimeException("Invalid country code");
         }
 
         this.identifier = identifier;
@@ -111,13 +111,13 @@ public class Passenger {
         Flight previousFlight = this.flight;
         if (null != previousFlight) {
             if (!previousFlight.removePassenger(this)) {
-                throw new RuntimeException("No se puede quitar al pasajero");
+                throw new RuntimeException("Cannot remove passenger");
             }
         }
         setFlight(flight);
         if (null != flight) {
             if (!flight.addPassenger(this)) {
-                throw new RuntimeException("No se puede agregar al pasajero");
+                throw new RuntimeException("Cannot add passenger");
             }
         }
     }
@@ -136,6 +136,6 @@ public class Passenger {
      */
     @Override
     public String toString() {
-        return "Pasajero " + getName() + " con identificador: " + getIdentifier() + " de " + getCountryCode();
+        return "Passenger " + getName() + " with identifier: " + getIdentifier() + " from " + getCountryCode();
     }
 }
