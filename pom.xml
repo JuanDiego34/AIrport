@@ -72,10 +72,6 @@
             <version>5.6.0</version>
             <scope>test</scope>
          </dependency>
-         <dependency>
-             <groupId>org.jenkins-ci.plugins</groupId>
-             <artifactId>metrics</artifactId>
-         </dependency>
         <dependency>
              <groupId>org.jenkins-ci.plugins</groupId>
              <artifactId>additional-metrics</artifactId>
