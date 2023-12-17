@@ -50,7 +50,31 @@
                     </execution>
                 </executions>
             </plugin>
-            
+            <plugin>
+                     <groupId>org.apache.maven.plugins</groupId>
+                     <artifactId>maven-checkstyle-plugin</artifactId>
+                     <version>3.0.0</version>
+                     <configuration>
+                         <configLocation>checkstyle.xml</configLocation>
+                     </configuration>
+           </plugin>
+                 <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.15.0</version>
+            </plugin>
+         <plugin>
+              <groupId>org.owasp</groupId>
+              <artifactId>dependency-check-maven</artifactId>
+              <version>9.0.5</version>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>check</goal>
+                      </goals>
+                  </execution>
+              </executions>
+            </plugin>
         </plugins>
     </build>
 
